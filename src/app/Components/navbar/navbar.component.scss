@@ -1,0 +1,46 @@
+.navbar-site{
+  display: flex;
+  height: 50px;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+  position: inherit;
+  width: 100%;
+  margin-bottom: 20px;
+
+    .logo{
+      height: 30px;
+      width: 120px;
+      background-color:#fff;
+      margin: 8px;
+    }
+
+    .group-user{
+      margin-left: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .picture-user{
+        height: 40px;
+        width: 40px;
+        background: #fff;
+        border-radius: 100%;
+      }
+
+      .btn-logout{
+        height: 40px;
+        width: 65px;
+        background: #fff;
+        margin: 8px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-items: center;
+        text-align: center;
+        font-family: cursive;
+      }
+
+    }
+}
