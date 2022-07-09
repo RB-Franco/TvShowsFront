@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginModel } from 'src/app/models/LoginModel';
 import { LoginService } from 'src/app/services/login.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +14,15 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
 
-  constructor( private formBuilder: FormBuilder,
-  private router: Router, private loginService: LoginService ) { }
+  constructor( 
+      private formBuilder: FormBuilder,
+      private router: Router, 
+      private loginService: LoginService,
+      private tokenService: TokenService ) { }
 
   ngOnInit(): void {
+    this.tokenService.clearToken()
+
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
@@ -29,13 +35,12 @@ export class LoginComponent implements OnInit {
       .pipe()
       .subscribe(
         token => {
-          var localToken = token;
-          localStorage.setItem('Token', localToken);
+          this.tokenService.setToken(token)
           this.router.navigate(["/home"]);
         });
   }
 
-  singUp(){
+  singUp(){    
     this.router.navigate(["/sign-up"]);
   }
 

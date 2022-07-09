@@ -16,9 +16,13 @@
           {{item.name}}
         </div>
         <div>
-          <button class="input" (click)="ShowDetails(item)"> Details</button>
-          <button class="input" (click)="AddToFavorites(item)"> Add to Favorites</button>
-      </div>
+          <button class="input" (click)="showDetails(item)">
+            <mat-icon class="icon" matSuffix>menu</mat-icon>Details
+          </button>
+          <button class="input" (click)="addToFavorites(item)">
+            <mat-icon class="icon" matSuffix>favorite_border</mat-icon>Favorites
+          </button>
+        </div>
       </div>
     </ng-container>
   </div>

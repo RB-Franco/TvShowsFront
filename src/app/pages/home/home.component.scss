@@ -16,19 +16,19 @@
   float: right;
 
   .list-shows {
+      display: contents;
       border-radius: 10px;
       background: #fff;
       box-shadow: 0 5px 8px 0 gray;
       text-align: center;
-      min-height: 350px;
-      transition: all 0.5s ease-in-out;
+      align-items: inherit;
+      max-width: 100%;
+      min-height: 150px;
       margin: 60px 16px;
       overflow: auto;
       flex: 1;
-      display: contents;
-      align-items: inherit;
       list-style: none;
-      max-width: 100%;
+      transition: all 0.5s ease-in-out;
 
       .show {
           border-radius: 7px;
@@ -37,14 +37,14 @@
           text-align: center;
           margin: 5px;
           padding: 5px;
-          height: 500px;
-          width: 275px;
-          min-height: 500px;
-          min-width: 275px;
+          height: 260px;
+          width: 190px;
+          min-height: 260px;
+          min-width: 190px;
 
           .image{
             border-radius: 7px;
-            height: 80%;
+            height: 77%;
             width: 98%;
           }
 
@@ -53,8 +53,7 @@
             font-family: cursive;
             font-weight: 500;
             color: gray;
-            padding: 16px;
-
+            padding: 1%;
             display: flex;
             justify-content: center;
             margin-top: auto;
@@ -63,22 +62,27 @@
         }
 
         .input{
-          background-color: #129dee;
           border: none;
-          color: white;
-          padding: 9px 0px;
-          text-align: center;
-          text-transform: uppercase;
-          font: menu;
-          box-shadow: 0 5px 10px 0 #70bce9;
-          border-radius: 9px 9px 9px 9px;
-          transition: all 0.3s ease-in-out;
-          width: 45%;
+          display: inline-flex;
+          border-radius: 100%;
+          justify-content: center;
+          align-items: center;
           cursor: pointer;
-          margin: 5px;
+          font: menu;
+          background: none;
+          box-shadow: none;
+          width: 49%;
+          transition: all 0.3s ease-in-out;
+          padding: 2px 0px;
+          text-align: center;
+          text-transform: uppercase; 
+          .icon {
+            padding: 0px 5px;
+          }
         }
+                 
         .input:hover{
-          box-shadow: 0 30px 60px 0 rgb(154, 210, 243);
+          box-shadow: 0 2px rgb(208, 208, 208);
         }
       }
   }

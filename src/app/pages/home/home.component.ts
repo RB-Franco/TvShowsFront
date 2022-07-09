@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TvShowsModel } from '../../models/TvShowsModel';
 import { TvShowService } from 'src/app/services/tvShow.service';
-// import { faHeart, faEye } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +8,16 @@ import { TvShowService } from 'src/app/services/tvShow.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  // faHeart = faHeart;
-  // faEye = faEye;
-  constructor(private tvShowService: TvShowService) { }
+  constructor(
+    private tvShowService: TvShowService
+  ) { }
 
-  listTvShows!: TvShowsModel[];
+  listTvShows: TvShowsModel[] = [];
+  listFavorites: TvShowsModel[] = [];
 
   ngOnInit(): void {
     this.getAllTvShows()
+    this.getAllfavorites()
   }
 
   getAllTvShows(){
@@ -28,17 +29,33 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  ShowDetails(show: TvShowsModel){
-
-  }
-
-  AddToFavorites(show: TvShowsModel){
+  getAllfavorites(){
     this.tvShowService.GetAllTvShows()
     .subscribe(
       data => {
         this.listTvShows = data;
       }
     );
+  }
+
+  showDetails(show: TvShowsModel){
+
+  }
+
+  addToFavorites(show: TvShowsModel){
+    debugger;
+    this.tvShowService.AddToFavorites(show)
+    .subscribe(
+      data => {
+        debugger;        
+        this.listFavorites.push(data);
+      }
+    );
+  }
+
+  checkFavorite(refecence: number){
+    debugger;
+    return this.listFavorites.some(x=> x.referenceId == refecence) ? 'favorite' : 'favorite_border'
   }
 }
 

@@ -1,7 +1,7 @@
 export class TvShowsModel
 {
   id!: number;
-  referenceId!: string;
+  referenceId!: number;
   name!: string;
   permalink!: string;
   startDate!: string;

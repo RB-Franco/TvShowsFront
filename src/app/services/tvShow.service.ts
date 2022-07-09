@@ -1,6 +1,9 @@
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { TokenService } from "./token.service";
+import { Observable } from "rxjs";
+import { TvShowsModel } from "../models/TvShowsModel";
 
 @Injectable(
   {
@@ -10,28 +13,33 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 export class TvShowService
 {
-
-  constructor(private httpClient: HttpClient)
+  
+  constructor(
+    private httpClient: HttpClient,
+    private tokenService: TokenService )
   {
-
   }
-  private readonly baseUrl = environment["endPoint"]
+
+  private readonly _token!: string;
+  private readonly baseUrl = environment["endPoint"];
+  private readonly _headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${this.tokenService.token}`
+  });
 
   GetAllTvShows() {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('Token')}`
-    })
     return this.httpClient.get<any>
-          (`${this.baseUrl}/GetAllTvShows/`, {headers: headers});
+          (`${this.baseUrl}/GetAllTvShows/`, {headers: this._headers});
+  }
+  
+  GetAllFavorites() {
+    return this.httpClient.get<any>
+          (`${this.baseUrl}/GetAllFavorites/`, {headers: this._headers});
   }
 
   AddToFavorites(object: any) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('Token')}`
-    })
-    return this.httpClient.post<any>
-          (`${this.baseUrl}/AddTvShowToFavorites/`, {headers: headers}, object);
+    let userId = this.tokenService.tokenData.idUser
+    return this.httpClient.post<TvShowsModel>
+          (`${this.baseUrl}/AddTvShowToFavorites/?userId=${userId}`, object, {headers: this._headers});
   }
 }

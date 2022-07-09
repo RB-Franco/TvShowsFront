@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
+import { TvShowDetailsComponent } from './pages/tv-show-details/tv-show-details.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { MatInputModule } from '@angular/material/input';
     HomeComponent,
     NavbarComponent,
     RegisterComponent,
-    SearchComponent
+    SearchComponent,
+    TvShowDetailsComponent
   ],
   imports: [
     BrowserModule,
