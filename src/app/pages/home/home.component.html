@@ -2,18 +2,22 @@
   <app-navbar></app-navbar>
 </div>
 
+<div>
+  <app-search class="search"></app-search>
+</div>
+
 <div class="card-container">
   <div class="list-shows">
     <ng-container *ngFor="let item of listTvShows">
 
       <div class="show">
-        <img [src]="item.image" alt="" class="image">
+        <img [src]="item.imagePath" alt="" class="image">
         <div class="title">
           {{item.name}}
         </div>
         <div>
-          <button class="input"><fa-icon [icon]="faEye"></fa-icon> Details</button>
-          <button class="input"><fa-icon [icon]="faHeart"></fa-icon> Favorites</button>
+          <button class="input" (click)="ShowDetails(item)"> Details</button>
+          <button class="input" (click)="AddToFavorites(item)"> Add to Favorites</button>
       </div>
       </div>
     </ng-container>

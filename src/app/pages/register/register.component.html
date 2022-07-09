@@ -1,0 +1,42 @@
+<div class="conteudo-login">
+    <form class="conteudo-form" [formGroup]="signUpForm" >
+      <div>
+        <div>
+          <input class="input-login" type="text" placeholder="Name" formControlName="name"/>
+        </div>
+        <div class="mensagem-erro"
+            *ngIf="signUpForm.get('name')?.errors?.['required'] && signUpForm.get('name')?.['touched']">
+            Required field
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <input class="input-login" type="email" placeholder="E-mail" formControlName="email"/>
+        </div>
+        <div class="mensagem-erro"
+            *ngIf="signUpForm.get('email')?.errors?.['required'] && signUpForm.get('email')?.['touched']">
+            Required field
+        </div>
+        <div class="mensagem-erro"
+            *ngIf="signUpForm.get('email')?.errors?.['email'] && signUpForm.get('email')?.['touched']">
+            E-mail format is not valid
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <input class="input-login" type="password" placeholder="Password" formControlName="password"/>
+        </div>
+        <div class="mensagem-erro"
+            *ngIf="signUpForm.get('password')?.errors?.['required'] && signUpForm.get('password')?.['touched']">
+            Required field
+        </div>
+      </div>
+
+      <div>
+          <button class="input-signUp" (click)="singUp()">Sing Up</button>
+          <button class="input-signUp" (click)="back()">Turn back</button>
+      </div>
+    </form>
+</div>

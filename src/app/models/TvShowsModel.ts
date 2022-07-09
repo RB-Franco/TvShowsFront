@@ -9,6 +9,6 @@ export class TvShowsModel
   country!: string;
   network!: string;
   status!: string;
-  image!: string;
+  imagePath!: string;
   createDate!: string;
 }

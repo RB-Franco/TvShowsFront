@@ -26,17 +26,17 @@ export class LoginComponent implements OnInit {
   signIn(){
     var loginData = this.loginForm.getRawValue() as LoginModel;
     this.loginService.SigInUser(loginData)
+      .pipe()
       .subscribe(
         token => {
           var localToken = token;
           localStorage.setItem('Token', localToken);
           this.router.navigate(["/home"]);
-        }
-      )
+        });
   }
 
   singUp(){
-
+    this.router.navigate(["/sign-up"]);
   }
 
 }

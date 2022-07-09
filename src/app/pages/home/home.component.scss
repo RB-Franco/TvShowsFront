@@ -1,9 +1,19 @@
+.search{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+}
+
 .card-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  width: 100%;
+  width: 99%;
+  float: right;
 
   .list-shows {
       border-radius: 10px;
@@ -27,12 +37,15 @@
           text-align: center;
           margin: 5px;
           padding: 5px;
-          height: 450px;
-          width: 250px;
+          height: 500px;
+          width: 275px;
+          min-height: 500px;
+          min-width: 275px;
 
           .image{
-            height: 350px;
-            width: 250px;
+            border-radius: 7px;
+            height: 80%;
+            width: 98%;
           }
 
           .title {
@@ -54,16 +67,18 @@
           border: none;
           color: white;
           padding: 9px 0px;
-          margin-top: 5px;
           text-align: center;
           text-transform: uppercase;
           font: menu;
           box-shadow: 0 5px 10px 0 #70bce9;
-          border-radius: 5px 5px 5px 5px;
+          border-radius: 9px 9px 9px 9px;
           transition: all 0.3s ease-in-out;
           width: 45%;
           cursor: pointer;
           margin: 5px;
+        }
+        .input:hover{
+          box-shadow: 0 30px 60px 0 rgb(154, 210, 243);
         }
       }
   }

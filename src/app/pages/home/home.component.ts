@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TvShowsModel } from '../../models/TvShowsModel';
 import { TvShowService } from 'src/app/services/tvShow.service';
-import { faHeart, faEye } from '@fortawesome/free-solid-svg-icons';
+// import { faHeart, faEye } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +9,8 @@ import { faHeart, faEye } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  faHeart = faHeart;
-  faEye = faEye;
+  // faHeart = faHeart;
+  // faEye = faEye;
   constructor(private tvShowService: TvShowService) { }
 
   listTvShows!: TvShowsModel[];
@@ -20,6 +20,19 @@ export class HomeComponent implements OnInit {
   }
 
   getAllTvShows(){
+    this.tvShowService.GetAllTvShows()
+    .subscribe(
+      data => {
+        this.listTvShows = data;
+      }
+    );
+  }
+
+  ShowDetails(show: TvShowsModel){
+
+  }
+
+  AddToFavorites(show: TvShowsModel){
     this.tvShowService.GetAllTvShows()
     .subscribe(
       data => {

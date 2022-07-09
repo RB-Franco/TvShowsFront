@@ -25,4 +25,13 @@ export class TvShowService
     return this.httpClient.get<any>
           (`${this.baseUrl}/GetAllTvShows/`, {headers: headers});
   }
+
+  AddToFavorites(object: any) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('Token')}`
+    })
+    return this.httpClient.post<any>
+          (`${this.baseUrl}/AddTvShowToFavorites/`, {headers: headers}, object);
+  }
 }
