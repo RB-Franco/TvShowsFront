@@ -1,6 +1,4 @@
-<div>
-  <app-navbar></app-navbar>
-</div>
+<app-navbar ></app-navbar>
 
 <div>
   <app-search class="search"></app-search>
@@ -9,7 +7,6 @@
 <div class="card-container">
   <div class="list-shows">
     <ng-container *ngFor="let item of listTvShows">
-
       <div class="show">
         <img [src]="item.imagePath" alt="" class="image">
         <div class="title">

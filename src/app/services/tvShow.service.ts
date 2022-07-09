@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { TokenService } from "./token.service";
 import { FavoriteModel } from 'src/app/models/favoriteModel';
 import { EpisodeModel } from "../models/episodeModel";
+import { ShowModel } from "../models/showModel";
 
 @Injectable(
   {
@@ -28,15 +29,14 @@ export class TvShowService
   });
 
   getAllTvShows() {
-    return this.httpClient.get<TvShowsModel[]>
+    return this.httpClient.get<ShowModel[]>
           (`${this.baseUrl}/getAllTvShows/`, {headers: this._headers});
   }
 
-  GetEpisodesByTvShow(showId: number) {
-    return this.httpClient.get<EpisodeModel[]>
-          (`${this.baseUrl}/getAllTvShows/?tvShowId=${showId}`, {headers: this._headers});
+  GetTvShowDetailById(showId: number) {
+    return this.httpClient.get<ShowModel>
+          (`${this.baseUrl}/GetTvShowDetailById/?tvShowId=${showId}`, {headers: this._headers});
   }
-
 
   getAllFavorites() {
     return this.httpClient.get<any>
@@ -49,7 +49,7 @@ export class TvShowService
   }
 
   removeFavorite(object: any) {
-    return this.httpClient.delete<TvShowsModel>
+    return this.httpClient.delete<ShowModel>
           (`${this.baseUrl}/removeTvShowToFavorites/`, {headers: this._headers, body: object});
   }
 }

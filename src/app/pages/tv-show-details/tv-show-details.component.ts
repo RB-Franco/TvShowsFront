@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ShowModel } from 'src/app/models/showModel';
+import { TvShowService } from 'src/app/services/tvShow.service';
 
 
 @Component({
@@ -9,18 +11,30 @@ import { Router } from '@angular/router';
 })
 export class TvShowDetailsComponent implements OnInit {
 
-  tvShowDetail: any;
+  data: any;
+  tvShowDetail!: ShowModel;
 
-  constructor(private router: Router) {
-    const nav = this.router.getCurrentNavigation();
-    this.tvShowDetail = nav?.extras.state;
+  constructor(
+    private readonly route: ActivatedRoute,
+    private router: Router,
+    private tvShowService: TvShowService) {
    }
 
   ngOnInit(): void {
+    this.route.queryParams
+    .subscribe(param=> {
+      this.getTvShowDetails(param['Id']);
+    });
+  }
+
+  getTvShowDetails(showId: number){
     debugger;
-    if(this.tvShowDetail?.tvShowDetail){
-      
-    }
+    this.tvShowService.GetTvShowDetailById(showId)
+    .subscribe(
+      result => {
+        if(result)
+        this.tvShowDetail = result;
+      });
   }
 
 }

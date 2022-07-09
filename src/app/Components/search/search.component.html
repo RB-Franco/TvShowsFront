@@ -1,7 +1,16 @@
-<form class="form-input">
+<!-- <form class="form-input">
   <mat-form-field class="form-field-input" >
     <mat-label>Search</mat-label>
     <input class="input" type="search" matInput>
     <mat-icon class="icon" matSuffix>search</mat-icon>
   </mat-form-field>
+</form> -->
+
+<form class="conteudo-form" [formGroup]="searchForm" >
+    <div class="field">
+      <input class="input" type="search" formControlName="search"/>
+        <button class="search-button">
+          <mat-icon class="icon" matSuffix>search</mat-icon>
+        </button>
+    </div>
 </form>

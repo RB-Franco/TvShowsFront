@@ -1,0 +1,15 @@
+.card-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 99%;
+    float: right;
+
+    .image {
+        
+        border-radius: 7px;
+        height: 450px;
+        width: 350px;
+      }
+}

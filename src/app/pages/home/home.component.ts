@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FavoriteModel } from 'src/app/models/favoriteModel';
-import { TvShowModel } from 'src/app/models/tvShowModel';
+import { ShowModel } from 'src/app/models/showModel';
 import { TvShowService } from 'src/app/services/tvShow.service';
 
 @Component({
@@ -10,12 +11,13 @@ import { TvShowService } from 'src/app/services/tvShow.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
   constructor(
     private router: Router,
     private tvShowService: TvShowService
   ) { }
 
-  listTvShows: TvShowModel[] = [];
+  listTvShows: ShowModel[] = [];
   listFavorites: FavoriteModel[] = [];
 
   ngOnInit(): void {
@@ -41,21 +43,11 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  showDetails(show: TvShowModel){
-
-    this.tvShowService.GetEpisodesByTvShow(show.id)
-    .subscribe(
-      result => {
-        if(result)
-        {
-          debugger;
-          show.episodes = result;
-          this.router.navigateByUrl("/tv-show-details", { state: {tvShowDetail: show}});
-        }
-      });
+  showDetails(show: ShowModel){
+    this.router.navigate(["/tv-show-details"], {queryParams: {Id: show.id}});
   }
 
-  favorites(show: TvShowModel){
+  favorites(show: ShowModel){
     debugger;
     let favorite = this.listFavorites.find(x=> x.showId == show.id)
 
@@ -83,7 +75,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  private addToFavorite(show: TvShowModel){
+  private addToFavorite(show: ShowModel){
     this.tvShowService.addToFavorites(show)
     .subscribe(
       data => {

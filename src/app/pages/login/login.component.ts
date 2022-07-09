@@ -31,11 +31,13 @@ export class LoginComponent implements OnInit {
 
   signIn(){
     var loginData = this.loginForm.getRawValue() as LoginModel;
+    this.loginService.setValid(false);
     this.loginService.SigInUser(loginData)
       .pipe()
       .subscribe(
         token => {
           this.tokenService.setToken(token)
+          this.loginService.setValid(true);
           this.router.navigate(["/home"]);
         });
   }
