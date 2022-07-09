@@ -1,4 +1,6 @@
-export class TvShowsModel
+import { EpisodeModel } from "./episodeModel";
+
+export class TvShowModel
 {
   id!: number;
   referenceId!: number;
@@ -11,4 +13,6 @@ export class TvShowsModel
   status!: string;
   imagePath!: string;
   createDate!: string;
+
+  episodes: EpisodeModel[] = [];
 }
